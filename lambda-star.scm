@@ -34,7 +34,7 @@
     ((lambda*-1 (arg0 arg1 ...) exp)
      (one-or-more (arg0 arg1 ...) exp))
     ((lambda*-1 (arg0 arg1 ... . rest) exp)
-     (dotted (arg0 arg1 ... . rest) exp))
+     (rest-args (arg0 arg1 ... . rest) exp))
     ((lambda*-1 args exp) (lambda args exp))))
 
 (define-syntax one-or-more
@@ -49,12 +49,12 @@
             (args (more-args f args)))))
        f))))
 
-(define-syntax dotted
+(define-syntax rest-args
   (syntax-rules ()
-    ((dotted (arg0 arg1 ... . rest) exp)
+    ((rest-args (arg0 arg1 ... . rest) exp)
      (letrec ((f (case-lambda
                    (() f)
-                   ((arg0 arg1 ... . rest) e)
+                   ((arg0 arg1 ... . rest) exp)
                    (args (more-args f args)))))
        f))))
 
