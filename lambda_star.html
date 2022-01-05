@@ -24,11 +24,8 @@ and Daniel P. Friedman.</p>
 choices for a standardized form.  In addition, these names have already
 been used by <a href="https://srfi.schemers.org/srfi-89">SRFI 89</a>.</p>
 
-<p>The behavior of nullary procedure created by lambda<em> may be
-counterintuitive and of dubious utility.  While Hemann and Friedman call
-this &ldquo;a natural extension of the behavior of λ</em>&rdquo;, they also
-note that &ldquo;nullary λ* functions seem to be of little to no use&rdquo;.
-Should this behavior be removed?</p>
+<p>The behavior of nullary procedure created by <code>lambda*</code> may be
+counterintuitive and of dubious utility.</p>
 
 <h1 id="rationale">Rationale</h1>
 
@@ -61,13 +58,14 @@ created by <code>lambda*</code> has the following semantics:</p>
   <li><p>If ⟨formals⟩ is the empty list, then</p>
     <ul>
       <li><p>If the procedure is applied to one or more arguments, then
-        <body> is evaluated and the result is applied to those
+        ⟨body⟩ is evaluated and the result is applied to those
         arguments.</p></li>
       <li><p>Otherwise, application is identical to that of a nullary
         procedure created with lambda.</p></li>
     </ul>
   </li>
-  <li><p>If ⟨formals⟩ is of the form (<em>v₁ v₂</em> &hellip; vₙ), then</p>
+  <li><p>If ⟨formals⟩ is of the form (<em>v</em>₁ <em>v₂</em> &hellip; vₙ),
+         then</p>
     <ul>
       <li><p>If the procedure is applied to <em>k</em> arguments, where
         <em>k</em> &lt; <em>n</em>, then &ldquo;partial application&rdquo;
@@ -97,15 +95,15 @@ created by <code>lambda*</code> has the following semantics:</p>
 
 <p>Equivalent to</p>
 
-<pre><code>(define &lt;variable&gt;
-  (lambda* (&lt;formals&gt;) &lt;body&gt;))
+<pre><code>(define</code> ⟨variable⟩
+  <code>(lambda*</code> ⟨formals⟩ ⟨body⟩<code>))
 </code></pre>
 
-<h1>Examples</h1>
+<h1 id="examples">Examples</h1>
 
 <p>Simple currying:</p>
 
-<pre><code>(define* (add* x y) (+ x y))
+<pre class="example"><code>(define* (add* x y) (+ x y))
 
 (map (add* 2) '(1 2 3))
 
@@ -124,19 +122,18 @@ created by <code>lambda*</code> has the following semantics:</p>
 
 <p>Currying with variadic procedures:</p>
 
-<p>(((lambda* (a b . rest) (values (list a b) rest)) 1) 2 3 4)</p>
+<pre class="example"><code>(((lambda* (a b . rest) (values (list a b) rest)) 1) 2 3 4)
+  ⇒ (1 2) (3 4)   ; two values
 
-<p> ⇒ (1 2) (3 4)   ; two values</p>
-
-<p>((lambda* (a b . rest) (values (+ a b) rest)) 2 3)</p>
-
-<p> ⇒ 5 ()  ; two values</p>
+((lambda* (a b . rest) (values (+ a b) rest)) 2 3)
+  ⇒ 5 ()  ; two values
+</code></pre>
 
 <p>Currying with nullary procedures:</p>
 
-<p>((lambda<em> () (lambda</em> (x y) (+ x y))) 2 3)</p>
-
-<p> ⇒ 5</p>
+<pre class="example"><code>((lambda () (lambda* (x y) (+ x y))) 2 3)
+ ⇒ 5
+</code></pre>
 
 <p>Extra arguments:</p>
 
@@ -199,3 +196,6 @@ mailing list.</p>
 
 <p>Jason Hemann &amp; Daniel P. Friedman, “λ*: Beyond Currying” (2013).
 Available <a href="http://www.schemeworkshop.org/2013/papers/HemannCurrying2013.pdf">on the Web</a>.</p>
+
+</body>
+</html>
