@@ -31,8 +31,10 @@ predictable behavior when applied to surplus arguments.</p>
 choices for standardized forms.  In addition, these names have already
 been used by <a href="https://srfi.schemers.org/srfi-89">SRFI 89</a>.</p>
 
-<p>The behavior of nullary procedure created by <code>lambda*</code> may be
-counterintuitive and of dubious utility.</p>
+<p>The behavior of nullary procedures created by <code>lambda*</code>
+may be counterintuitive and of dubious utility.  Passing extra arguments
+to the body of a procedure may also be questionable; it can make
+accidental arity mismatches hard to find.</p>
 
 <h1 id="rationale">Rationale</h1>
 
