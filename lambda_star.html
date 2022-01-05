@@ -66,7 +66,7 @@ currying operator; instead, it allows procedures to be easily
 specialized on given parameters.  However, this is not too difficult
 in ordinary Scheme (cf. Al Petrofsky's
 <a href="https://srfi-email.schemers.org/srfi-26/msg/2783121/">comment</a>
-to the SRFI 26 mailing list), and, as such, <code>cut</code> is not too
+to the SRFI 26 mailing list), and, as such, <code>cut</code> is not
 frequently seen in Scheme programs.  <code>cut</code> also introduces a
 novel notation using the tokens <code>&lt;&gt;</code> and
 <code>&lt;...&gt;</code>, which may pose an obstacle for new users.</p>
@@ -74,10 +74,10 @@ novel notation using the tokens <code>&lt;&gt;</code> and
 <p>The <code>lambda*</code> form created by Jason Hemann and Daniel P.
 Friedman and described in this SRFI allows the
 creation of true curried procedures which can also be treated as
-normal, uncurried Scheme procedure.  For example, a
+normal, uncurried Scheme procedures.  For example, a
 <code>lambda*</code> procedure of two arguments may be applied to one
 argument to return a new procedure of one argument, or directly to two
-arguments to produce its value.  <code>lambda*</code> also provides
+arguments to return its value.  <code>lambda*</code> also provides
 consistent semantics for nullary and variadic procedures, and
 predictable behavior for cases in which a procedure is
 applied to more arguments than it accepts.  All this is accomplished
