@@ -14,7 +14,7 @@
 <p>by Wolfgang Corcoran-Mathe, based on a design by Jason Hemann
 and Daniel P. Friedman.</p>
 
-<h1 id="abstract">Abstract</h1>
+<h2 id="abstract">Abstract</h2>
 
 <p>Scheme lacks a flexible way to create and apply curried procedures.
 This SRFI describes <code>lambda*</code>, a variant of
@@ -25,7 +25,7 @@ without any novel syntax.  <code>lambda*</code> also supports nullary
 and variadic procedures, and procedures created with it have
 predictable behavior when applied to surplus arguments.</p>
 
-<h1 id="issues">Issues</h1>
+<h2 id="issues">Issues</h2>
 
 <p>The names <code>lambda*</code> and <code>define*</code> may be poor
 choices for standardized forms.  In addition, these names have already
@@ -36,7 +36,7 @@ may be counterintuitive and of dubious utility.  Passing extra arguments
 to the body of a procedure may also be questionable; it can make
 accidental arity mismatches hard to find.</p>
 
-<h1 id="rationale">Rationale</h1>
+<h2 id="rationale">Rationale</h2>
 
 <p>Currying is a well-known tactic in functional programming and is widely
 supported in many languages (e.g. Standard ML and Haskell).  True
@@ -85,7 +85,7 @@ without the introduction of any novel forms; syntactically,
 <code>lambda*</code> is identical to <code>lambda</code>, which should
 make it easy to adopt in existing Scheme programs.</p>
 
-<h1 id="specification">Specification</h1>
+<h2 id="specification">Specification</h2>
 
 <p><code>(lambda*</code> ⟨formals⟩ ⟨body⟩<code>)</code></p>
 
@@ -150,7 +150,7 @@ procedure, with the same environment semantics as <code>lambda</code>
   <code>(lambda*</code> ⟨formals⟩ ⟨body⟩<code>))
 </code></pre>
 
-<h1 id="examples">Examples</h1>
+<h2 id="examples">Examples</h2>
 
 <p>Simple currying:</p>
 
@@ -193,7 +193,7 @@ procedure, with the same environment semantics as <code>lambda</code>
      (lambda* (c) (+ a b c)))) 1 2 3) ⇒ 6
 </code></pre>
 
-<h1 id="implementation">Implementation</h1>
+<h2 id="implementation">Implementation</h2>
 
 <p>The following sample implementation is portable to R⁶RS and R⁷RS
 <code>syntax-rules</code> implementations:</p>
@@ -245,14 +245,14 @@ procedure, with the same environment semantics as <code>lambda</code>
        (lambda* formals exp ...)))))
 </code></pre>
 
-<h1 id="acknowledgements">Acknowledgements</h1>
+<h2 id="acknowledgements">Acknowledgements</h2>
 
 <p>Thanks to Jason Hemann and Daniel P. Friedman for creating <code>lambda*</code>.</p>
 
 <p>Thanks to the SRFI editor and to the participants of the SRFI
 mailing list.</p>
 
-<h1 id="references">References</h1>
+<h2 id="references">References</h2>
 
 <p>Jason Hemann &amp; Daniel P. Friedman, “λ*: Beyond Currying” (2013).
 Available <a href="http://www.schemeworkshop.org/2013/papers/HemannCurrying2013.pdf">on the Web</a>.</p>
