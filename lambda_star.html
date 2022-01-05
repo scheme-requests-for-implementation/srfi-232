@@ -29,6 +29,41 @@ counterintuitive and of dubious utility.</p>
 
 <h1 id="rationale">Rationale</h1>
 
+<p>Currying is a well-known tactic in functional programming, and Scheme
+has seen several approaches to providing it, or, at least, something like
+it.  The "higher-order lambda" notation of
+<a href="https://srfi.schemers.org/srfi-219">SRFI 219</a> extends the
+syntax of <code>define</code> with a simple shorthand for writing
+curried procedures.  The <code>cut</code> operator, introduced by
+<a href="https://srfi.schemers.org/srfi-26">SRFI 26</a>, is not a
+currying operator; instead, it allows procedures to be easily
+specialized on given parameters.</p>
+
+<p>While both <code>cut</code> and <code>SRFI 219</code> notation are
+useful tools, they have drawbacks.  SRFI 219 notation
+translates directly to a nested higher-order procedure which must
+be applied in a similarly nested manner:</p>
+
+<pre class="example"><code>(define ((add-c x) y)
+  (+ x y))
+
+(add-c 2 3) ⇒ ; error: too many arguments
+
+((add-c 2) 3) ⇒ 5
+</code></pre>
+
+<p>Writing true curried procedures with this notation
+is thus probably too verbose and inflexible for normal use.  There is
+also no analogous notation for anonymous procedures, and a core Scheme
+form, <code>define</code>, must also be altered.  <code>cut</code>, on
+the other hand, does not provide any sort of currying.  It is
+convenient for specializing procedures, but this is not too difficult
+in ordinary Scheme (cf. Al Petrofsky's
+<a href="https://srfi-email.schemers.org/srfi-26/msg/2783121/">comment</a>
+to the SRFI 26 mailing list).  <code>cut</code> also introduces a
+novel notation using the tokens <code>&lt;&gt;</code> and
+<code>&lt;...&gt;</code>, which may pose an obstacle for new users.</p>
+
 <p>The <code>lambda*</code> form described in this SRFI allows the
 creation of true curried procedures which can also be treated as
 normal, uncurried Scheme procedure.  For example, a
