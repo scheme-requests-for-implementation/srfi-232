@@ -177,7 +177,10 @@ created by <code>lambda*</code> has the following semantics:</p>
 
 <p>Extra arguments:</p>
 
-<p>TODO</p>
+<pre class="example"><code>((lambda* (a)
+   (lambda* (b)
+     (lambda* (c) (+ a b c)))) 1 2 3) ⇒ 6
+</code></pre>
 
 <h1 id="implementation">Implementation</h1>
 
