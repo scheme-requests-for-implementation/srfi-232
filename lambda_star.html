@@ -93,9 +93,9 @@ make it easy to adopt in existing Scheme programs.</p>
 the R⁷RS.</p>
 
 <p>Semantics: A <code>lambda*</code> expression evaluates to a
-procedure, with the same environment and binding semantics as
-<code>lambda</code> (R⁷RS 4.1.4).  The application of a procedure
-created by <code>lambda*</code> has the following semantics:</p>
+procedure, with the same environment semantics as <code>lambda</code>
+(R⁷RS 4.1.4).  The application of a procedure created by
+<code>lambda*</code> has the following semantics:</p>
 
 <ul>
   <li><p>If ⟨formals⟩ is the empty list, then</p>
@@ -137,6 +137,9 @@ created by <code>lambda*</code> has the following semantics:</p>
     parameters <em>v</em>₁,&nbsp;&hellip;,&nbsp;<em>v</em>ₙ are bound
     to the first <em>n</em> arguments and <em>v</em>ₙ₊₁ is bound to
     a list of any remaining arguments, in order.</p></li>
+  <li><p>If ⟨formals⟩ is of the form ⟨variable⟩ (a single identifier),
+    then application proceeds as if the procedure were created with
+    <code>lambda</code>.</p></li>
 </ul>
 
 <p><code>(define* (</code>⟨variable⟩ ⟨formals⟩<code>)</code> ⟨body⟩<code>)</code></p>
