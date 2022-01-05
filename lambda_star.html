@@ -101,34 +101,40 @@ created by <code>lambda*</code> has the following semantics:</p>
     <ul>
       <li><p>If the procedure is applied to one or more arguments, then
         ⟨body⟩ is evaluated and the result is applied to those
-        arguments.</p></li>
+        arguments.  It is an error if the value of ⟨body⟩ is not a
+        procedure.</p></li>
       <li><p>Otherwise, application is identical to that of a nullary
-        procedure created with lambda.</p></li>
+        procedure created with <code>lambda</code>.</p></li>
     </ul>
   </li>
-  <li><p>If ⟨formals⟩ is of the form (<em>v</em>₁ <em>v₂</em> &hellip; vₙ),
-         then</p>
+  <li><p>If ⟨formals⟩ is of the form
+         (<em>v</em>₁ <em>v₂</em> &hellip; <em>v</em>ₙ), then</p>
     <ul>
       <li><p>If the procedure is applied to <em>k</em> arguments, where
         <em>k</em> &lt; <em>n</em>, then &ldquo;partial application&rdquo;
         is performed: the result is a procedure with <code>lambda*</code>
-        semantics with the formal parameters v₁ v₂ &hellip; vₙ bound to the
-        supplied arguments; this procedure can accept further arguments as
-        described in this section.</p></li>
+        semantics with the formal parameters <em>v</em>₁, <em>v</em>₂,
+        &hellip;, <em>v</em>ₙ bound to the supplied arguments; this
+        procedure can accept further arguments as described in this
+        section.</p>
+        <p>Note that, if <em>k</em> = 0, the result is a procedure
+        which is extensionally the same as the original procedure.</p></li>
       <li><p>If the procedure is applied to <em>k</em> arguments, where
         <em>k</em> &gt; <em>n</em>, then ⟨body⟩ is evaluated with the
-        formal parameters v₁, v₂, &hellip; vₙ bound to the first <em>n</em>
-        arguments, and the result is applied to the remaining <em>n</em>
-        - <em>k</em> arguments.  It is an error if the value of ⟨body⟩ is
-        not a procedure.</p></li>
+        formal parameters <em>v</em>₁, <em>v</em>₂, &hellip;, <em>v</em>ₙ
+        bound to the first <em>n</em> arguments, and the result is applied
+        to the remaining <em>n</em> − <em>k</em> arguments.  It is an
+        error if the value of ⟨body⟩ is not a procedure.</p></li>
       <li><p>If the procedure is applied to exactly <em>n</em> arguments,
         then evaluation proceeds as with <code>lambda</code>.</p></li>
     </ul>
   </li>
-  <li><p>If formals is of the form (v₁ &hellip; vₙ . vₙ₊₁), then
+  <li><p>If formals is of the form
+    (<em>v</em>₁ &hellip; <em>v</em>ₙ&nbsp;.&nbsp;<em>v</em>ₙ₊₁), then
     application proceeds as in the proper list case, except that,
-    if <em>n</em> or more arguments are supplied, then v₁ &hellip; vₙ
-    are bound to the first <em>n</em> arguments and vₙ₊₁ is bound to
+    if <em>n</em> or more arguments are supplied, then the formal
+    parameters <em>v</em>₁,&nbsp;&hellip;,&nbsp;<em>v</em>ₙ are bound
+    to the first <em>n</em> arguments and <em>v</em>ₙ₊₁ is bound to
     a list of any remaining arguments, in order.</p></li>
 </ul>
 
