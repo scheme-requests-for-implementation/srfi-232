@@ -114,17 +114,17 @@ created by <code>lambda*</code> has the following semantics:</p>
       <li><p>If the procedure is applied to <em>k</em> arguments, where
         <em>k</em> &lt; <em>n</em>, then &ldquo;partial application&rdquo;
         is performed: the result is a procedure with <code>lambda*</code>
-        semantics with the formal parameters <em>v</em>₁, <em>v</em>₂,
-        &hellip;, <em>v</em>ₙ bound to the supplied arguments; this
-        procedure can accept further arguments as described in this
-        section.</p>
+        semantics with an extended environment in which the formal
+        parameters <em>v</em>₁, <em>v</em>₂, &hellip;, <em>v</em>ₖ are
+        bound to the supplied arguments in order; this procedure can
+        accept further arguments as described in this section.</p>
         <p>Note that, if <em>k</em> = 0, the result is a procedure
         which is extensionally the same as the original procedure.</p></li>
       <li><p>If the procedure is applied to <em>k</em> arguments, where
         <em>k</em> &gt; <em>n</em>, then ⟨body⟩ is evaluated with the
         formal parameters <em>v</em>₁, <em>v</em>₂, &hellip;, <em>v</em>ₙ
         bound to the first <em>n</em> arguments, and the result is applied
-        to the remaining <em>n</em> − <em>k</em> arguments.  It is an
+        to the remaining <em>k</em> − <em>n</em> arguments.  It is an
         error if the value of ⟨body⟩ is not a procedure.</p></li>
       <li><p>If the procedure is applied to exactly <em>n</em> arguments,
         then evaluation proceeds as with <code>lambda</code>.</p></li>
