@@ -183,6 +183,12 @@ created by <code>lambda*</code> has the following semantics:</p>
 
 (define (more-args f current)
   (lambda args (apply f (append current args))))
+
+(define-syntax define*
+  (syntax-rules ()
+    ((define* (var . formals) exp ...)
+     (define var
+       (lambda* formals exp ...)))))
 </code></pre>
 
 <h1 id="acknowledgements">Acknowledgements</h1>
