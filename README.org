@@ -1,0 +1,22 @@
+* SRFI 232: An advanced currying form
+
+** by Wolfgang Corcoran-Mathe
+
+
+
+keywords: [[https://srfi.schemers.org/?keywords=syntax][Syntax]]
+
+This repository hosts [[https://srfi.schemers.org/srfi-232/][SRFI 232]]: An advanced currying form, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
+
+This SRFI is in /final/ status.
+
+See also [[https://srfi.schemers.org/srfi-146/][SRFI 146: Mappings]] and [[https://srfi.schemers.org/srfi-189/][SRFI 189: Maybe and Either: optional container types]].
+
+The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-232/srfi-232.html][SRFI Document]].
+
+If you'd like to participate in the discussion of this SRFI, or report issues with it, please [[https://srfi.schemers.org/srfi-232/][join the SRFI-232 mailing list]] and send your message there.
+
+Thank you.
+
+
+[[mailto:srfi-editors@srfi.schemers.org][The SRFI Editors]]

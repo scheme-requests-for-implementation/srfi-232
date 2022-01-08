@@ -14,6 +14,18 @@
 <p>by Wolfgang Corcoran-Mathe, based on a design by Jason Hemann
 and Daniel P. Friedman.</p>
 
+<h2 id="status">Status</h2>
+
+<p>This SRFI is currently in <em>draft</em> status.  Here is <a href="https://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+232+at+srfi+dotschemers+dot+org">srfi-232@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="https://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="https://srfi-email.schemers.org/srfi-232/">archive</a>.</p>
+<ul>
+  <li>Received: 2022-01-05</li>
+  <li>60-day deadline: 2022-03-08</li>
+  <li>Draft #1 published: 2022-01-07</li>
+  <li>Wolfgang's <a href="https://github.com/Zipheir/lambda-star-presrfi">personal
+       Git repo for this SRFI</a> for reference while the SRFI is in
+       <em>draft</em> status (<a href="https://htmlpreview.github.io/?https://github.com/Zipheir/lambda-star-presrfi/blob/main/lambda_star.html">preview</a>)</li>
+</ul>
+
 <h2 id="abstract">Abstract</h2>
 
 <p>Scheme lacks a flexible way to create and apply curried procedures.
@@ -29,7 +41,7 @@ predictable behavior when applied to surplus arguments.</p>
 
 <p>The names <code>lambda*</code> and <code>define*</code> may be poor
 choices for standardized forms.  In addition, these names have already
-been used by <a href="https://srfi.schemers.org/srfi-89">SRFI 89</a>.</p>
+been used by <a href="https://srfi.schemers.org/srfi-89/">SRFI 89</a>.</p>
 
 <p>The behavior of nullary procedures created by <code>lambda*</code>
 may be counterintuitive and of dubious utility.  Passing extra arguments
@@ -45,7 +57,7 @@ building-block of first-class procedures, Scheme provides little support
 for defining curried procedures, and the clumsiness of applying such
 procedures may deter programmers from using them at all.  The
 &ldquo;higher-order lambda&rdquo; notation of
-<a href="https://srfi.schemers.org/srfi-219">SRFI 219</a> alleviates the
+<a href="https://srfi.schemers.org/srfi-219/">SRFI 219</a> alleviates the
 first problem; it extends the syntax of <code>define</code> with a simple
 shorthand for writing curried procedures.  The complexity of applying
 curried procedures remains, however:
@@ -61,7 +73,7 @@ curried procedures remains, however:
 <p>Perhaps because of this clumsiness, Scheme has another form which
 provides something a little like currying.  The <code>cut</code>
 operator, introduced by
-<a href="https://srfi.schemers.org/srfi-26">SRFI 26</a>, is not a
+<a href="https://srfi.schemers.org/srfi-26/">SRFI 26</a>, is not a
 currying operator; instead, it allows procedures to be easily
 specialized on given parameters.  However, this is not too difficult
 in ordinary Scheme (cf. Al Petrofsky's
@@ -197,7 +209,7 @@ procedure, with the same environment semantics as <code>lambda</code>
 
 <p>The sample implementation is portable to R⁶RS and R⁷RS
 <code>syntax-rules</code> implementations and can be found
-in the repository for this SRFI.</p>
+in the <a href="https://github.com/scheme-requests-for-implementation/srfi-232">repository</a> for this SRFI.</p>
 
 <h2 id="acknowledgements">Acknowledgements</h2>
 
