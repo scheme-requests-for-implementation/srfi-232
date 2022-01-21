@@ -21,6 +21,9 @@
 ;;; CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ;;; SOFTWARE.
 
+(import (scheme base)
+        (scheme case-lambda))
+
 (define-syntax lambda*
   (syntax-rules ()
     ((lambda* formals exp ...)
