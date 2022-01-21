@@ -155,7 +155,6 @@ procedure, with the same environment semantics as <code>lambda</code>
 <pre class="example"><code>(define* (add* x y) (+ x y))
 
 (map (add* 2) '(1 2 3))
-
  ⇒ (3 4 5)
 
 (define* (fold* proc base lis)
@@ -165,7 +164,6 @@ procedure, with the same environment semantics as <code>lambda</code>
       (product (fold* * 1))
       (lis '(1 2 3 4 5)))
   (values (sum lis) (product lis)))
-
  ⇒ 15 120  ; two values
 </code></pre>
 
