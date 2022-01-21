@@ -4,5 +4,5 @@
         (scheme case-lambda)
         (srfi 64))
 
-(include "lambda-star.scm")
+(include "srfi-232.scm")
 (include "test-body.scm")

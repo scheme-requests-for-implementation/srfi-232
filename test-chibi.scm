@@ -17,5 +17,5 @@
     ((test-eqv . rest)
      (test-equal eqv? . rest))))
 
-(include "lambda-star.scm")
+(include "srfi-232.scm")
 (include "test-body.scm")
