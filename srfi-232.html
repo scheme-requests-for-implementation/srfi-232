@@ -33,8 +33,8 @@ This SRFI describes <code>lambda*</code>, a variant of
 <code>lambda</code> that creates true curried procedures which also
 behave just like ordinary Scheme procedures.  They can be applied to
 their arguments one-by-one, all at once, or anywhere in between,
-without any novel syntax.  <code>lambda*</code> also supports nullary
-and variadic procedures, and procedures created with it have
+without any novel syntax.  <code>lambda*</code> also supports
+variadic procedures, and procedures created with it have
 predictable behavior when applied to surplus arguments.</p>
 
 <h2 id="issues">Issues</h2>
@@ -42,11 +42,6 @@ predictable behavior when applied to surplus arguments.</p>
 <p>The names <code>lambda*</code> and <code>define*</code> may be poor
 choices for standardized forms.  In addition, these names have already
 been used by <a href="https://srfi.schemers.org/srfi-89/">SRFI 89</a>.</p>
-
-<p>The behavior of nullary procedures created by <code>lambda*</code>
-may be counterintuitive and of dubious utility.  Passing extra arguments
-to the body of a procedure may also be questionable; it can make
-accidental arity mismatches hard to find.</p>
 
 <h2 id="rationale">Rationale</h2>
 
@@ -90,7 +85,7 @@ normal, uncurried Scheme procedures.  For example, a
 <code>lambda*</code> procedure of two arguments may be applied to one
 argument to return a new procedure of one argument, or directly to two
 arguments to return its value.  <code>lambda*</code> also provides
-consistent semantics for nullary and variadic procedures, and
+consistent semantics for variadic procedures, and
 predictable behavior for cases in which a procedure is
 applied to more arguments than it accepts.  All this is accomplished
 without the introduction of any novel forms; syntactically,
@@ -110,16 +105,6 @@ procedure, with the same environment semantics as <code>lambda</code>
 <code>lambda*</code> has the following semantics:</p>
 
 <ul>
-  <li><p>If ⟨formals⟩ is the empty list, then</p>
-    <ul>
-      <li><p>If the procedure is applied to one or more arguments, then
-        ⟨body⟩ is evaluated and the result is applied to those
-        arguments.  It is an error if the value of ⟨body⟩ is not a
-        procedure.</p></li>
-      <li><p>Otherwise, application is identical to that of a nullary
-        procedure created with <code>lambda</code>.</p></li>
-    </ul>
-  </li>
   <li><p>If ⟨formals⟩ is of the form
          (<em>v</em>₁ <em>v₂</em> &hellip; <em>v</em>ₙ), then</p>
     <ul>
@@ -152,6 +137,7 @@ procedure, with the same environment semantics as <code>lambda</code>
   <li><p>If ⟨formals⟩ is of the form ⟨variable⟩ (a single identifier),
     then application proceeds as if the procedure were created with
     <code>lambda</code>.</p></li>
+  <li><p>It is a syntax violation if ⟨formals⟩ is the empty list.</p></li>
 </ul>
 
 <p><code>(define* (</code>⟨variable⟩ ⟨formals⟩<code>)</code> ⟨body⟩<code>)</code></p>
@@ -190,12 +176,6 @@ procedure, with the same environment semantics as <code>lambda</code>
 
 ((lambda* (a b . rest) (values (+ a b) rest)) 2 3)
   ⇒ 5 ()  ; two values
-</code></pre>
-
-<p>Currying with nullary procedures:</p>
-
-<pre class="example"><code>((lambda* () (lambda* (x y) (+ x y))) 2 3)
- ⇒ 5
 </code></pre>
 
 <p>Extra arguments:</p>
