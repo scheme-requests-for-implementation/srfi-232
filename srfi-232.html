@@ -159,7 +159,10 @@ procedure, with the same environment semantics as <code>lambda</code>
 
 <h2 id="examples">Examples</h2>
 
-<p>Simple currying:</p>
+<h3>Simple currying</h3>
+
+<p>Here, <code>lambda*</code> is used to create procedures which can
+be concisely parameterized:</p>
 
 <pre class="example"><code>(define* (add* x y) (+ x y))
 
@@ -176,13 +179,23 @@ procedure, with the same environment semantics as <code>lambda</code>
  ⇒ (15 120)
 </code></pre>
 
-<p>Currying with variadic procedures:</p>
+<h3>Curried polyvariadic procedures</h3>
 
-<pre class="example"><code>(((lambda* (a b . rest) (list a b rest)) 1) 2 3 4)
-  ⇒ (1 2 (3 4))
+<p>A polyvariadic procedure created with <code>lambda*</code> can be
+partially applied until a procedure of at least one argument remains:</p>
+
+<pre class="example"><code>(define foo (lambda* (a b . rest) (list a b rest)))
+
+((foo 1) 2 3 4) ⇒ (1 2 (3 4))
+
+((foo 'a) 'b) ⇒ (a b ())
 </code></pre>
 
-<p>Extra arguments:</p>
+<h3>Extra arguments</h3>
+
+<p>When a <code>lambda*</code> procedure is applied to more arguments
+than it accepts, the remaining arguments are passed to the procedure
+body:</p>
 
 <pre class="example"><code>((lambda* (a)
    (lambda* (b)
