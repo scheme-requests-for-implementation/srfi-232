@@ -180,9 +180,6 @@ procedure, with the same environment semantics as <code>lambda</code>
 
 <pre class="example"><code>(((lambda* (a b . rest) (values (list a b) rest)) 1) 2 3 4)
   ⇒ (1 2) (3 4)   ; two values
-
-((lambda* (a b . rest) (values (+ a b) rest)) 2 3)
-  ⇒ 5 ()  ; two values
 </code></pre>
 
 <p>Extra arguments:</p>
