@@ -172,14 +172,14 @@ procedure, with the same environment semantics as <code>lambda</code>
 (let ((sum (fold* + 0))
       (product (fold* * 1))
       (lis '(1 2 3 4 5)))
-  (values (sum lis) (product lis)))
- ⇒ 15 120  ; two values
+  (list (sum lis) (product lis)))
+ ⇒ (15 120)
 </code></pre>
 
 <p>Currying with variadic procedures:</p>
 
-<pre class="example"><code>(((lambda* (a b . rest) (values (list a b) rest)) 1) 2 3 4)
-  ⇒ (1 2) (3 4)   ; two values
+<pre class="example"><code>(((lambda* (a b . rest) (list a b rest)) 1) 2 3 4)
+  ⇒ (1 2 (3 4))
 </code></pre>
 
 <p>Extra arguments:</p>
