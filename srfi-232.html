@@ -30,19 +30,13 @@ and Daniel P. Friedman.</p>
 <h2 id="abstract">Abstract</h2>
 
 <p>Scheme lacks a flexible way to create and apply curried procedures.
-This SRFI describes <code>lambda*</code>, a variant of
+This SRFI describes <code>curried</code>, a variant of
 <code>lambda</code> that creates true curried procedures which also
 behave just like ordinary Scheme procedures.  They can be applied to
 their arguments one-by-one, all at once, or anywhere in between,
-without any novel syntax.  <code>lambda*</code> also supports
+without any novel syntax.  <code>curried</code> also supports
 variadic procedures, and procedures created with it have
 predictable behavior when applied to surplus arguments.</p>
-
-<h2 id="issues">Issues</h2>
-
-<p>The names <code>lambda*</code> and <code>define*</code> may be poor
-choices for standardized forms.  In addition, these names have already
-been used by <a href="https://srfi.schemers.org/srfi-89/">SRFI 89</a>.</p>
 
 <h2 id="rationale">Rationale</h2>
 
@@ -79,39 +73,39 @@ frequently seen in Scheme programs.  <code>cut</code> also introduces a
 novel notation using the tokens <code>&lt;&gt;</code> and
 <code>&lt;...&gt;</code>, which may pose an obstacle for new users.</p>
 
-<p>The <code>lambda*</code> form created by Jason Hemann and Daniel P.
+<p>The <code>curried</code> form created by Jason Hemann and Daniel P.
 Friedman and described in this SRFI allows the
 creation of true curried procedures which can also be treated as
 normal, uncurried Scheme procedures.  For example, a
-<code>lambda*</code> procedure of two arguments may be applied to one
+<code>curried</code> procedure of two arguments may be applied to one
 argument to return a new procedure of one argument, or directly to two
-arguments to return its value.  <code>lambda*</code> also provides
+arguments to return its value.  <code>curried</code> also provides
 consistent semantics for variadic procedures, and
 predictable behavior for cases in which a procedure is
 applied to more arguments than it accepts.  All this is accomplished
 without the introduction of any novel forms; syntactically,
-<code>lambda*</code> is very similar to <code>lambda</code>, which should
+<code>curried</code> is very similar to <code>lambda</code>, which should
 make it easy to adopt in existing Scheme programs.</p>
 
 <p>This SRFI is not meant to replace SRFIs 26 or 219.  In some
 cases, these existing techniques may be preferable; the
 SRFI 219 notation does much less "under the table" than does
-<code>lambda*</code>, and <code>cut</code> provides greater flexibility
-in argument specialization.  The <code>lambda*</code> form provides
+<code>curried</code>, and <code>cut</code> provides greater flexibility
+in argument specialization.  The <code>curried</code> form provides
 another option, one that will hopefully also prove useful and
 convenient.</p>
 
 <h2 id="specification">Specification</h2>
 
-<p><code>(lambda*</code> ⟨formals⟩ ⟨body⟩<code>)</code></p>
+<p><code>(curried</code> ⟨formals⟩ ⟨body⟩<code>)</code></p>
 
 <p>Syntax: ⟨formals⟩ and ⟨body⟩ are as described in section 4.1.4 of
 the R⁷RS.</p>
 
-<p>Semantics: A <code>lambda*</code> expression evaluates to a
+<p>Semantics: A <code>curried</code> expression evaluates to a
 procedure, with the same environment semantics as <code>lambda</code>
 (R⁷RS 4.1.4).  The application of a procedure created by
-<code>lambda*</code> has the following semantics:</p>
+<code>curried</code> has the following semantics:</p>
 
 <ul>
   <li><p>If ⟨formals⟩ is of the form
@@ -119,7 +113,7 @@ procedure, with the same environment semantics as <code>lambda</code>
     <ul>
       <li><p>If the procedure is applied to <em>k</em> arguments, where
         <em>k</em> &lt; <em>n</em>, then &ldquo;partial application&rdquo;
-        is performed: the result is a procedure with <code>lambda*</code>
+        is performed: the result is a procedure with <code>curried</code>
         semantics with an extended environment in which the formal
         parameters <em>v</em>₁, <em>v</em>₂, &hellip;, <em>v</em>ₖ are
         bound to the supplied arguments in order; this procedure can
@@ -149,19 +143,19 @@ procedure, with the same environment semantics as <code>lambda</code>
   <li><p>It is a syntax violation if ⟨formals⟩ is the empty list.</p></li>
 </ul>
 
-<p><code>(define* (</code>⟨variable⟩ ⟨formals⟩<code>)</code> ⟨body⟩<code>)</code></p>
+<p><code>(define-curried (</code>⟨variable⟩ ⟨formals⟩<code>)</code> ⟨body⟩<code>)</code></p>
 
 <p>Equivalent to</p>
 
 <pre><code>(define</code> ⟨variable⟩
-  <code>(lambda*</code> ⟨formals⟩ ⟨body⟩<code>))
+  <code>(curried</code> ⟨formals⟩ ⟨body⟩<code>))
 </code></pre>
 
 <h2 id="examples">Examples</h2>
 
 <h3>Simple currying</h3>
 
-<p>Here, <code>lambda*</code> is used to create procedures which can
+<p>Here, <code>curried</code> is used to create procedures which can
 be concisely parameterized:</p>
 
 <pre class="example"><code>(define* (add* x y) (+ x y))
@@ -184,11 +178,11 @@ be concisely parameterized:</p>
 <p>&ldquo;Polyvariadic&rdquo; refers to a procedure denoted by an
 expression of the form
 <code>(lambda (<em>v</em>₁ &hellip; <em>v</em>ₙ&nbsp;.&nbsp;<em>v</em>ₙ₊₁)</code>).
-A polyvariadic procedure created with <code>lambda*</code> can be
+A polyvariadic procedure created with <code>curried</code> can be
 partially applied until a procedure of at least one argument
 remains:</p>
 
-<pre class="example"><code>(define foo (lambda* (a b . rest) (list a b rest)))
+<pre class="example"><code>(define foo (curried (a b . rest) (list a b rest)))
 
 ((foo 1) 2 3 4) ⇒ (1 2 (3 4))
 
@@ -197,13 +191,13 @@ remains:</p>
 
 <h3>Extra arguments</h3>
 
-<p>When a <code>lambda*</code> procedure is applied to more arguments
+<p>When a <code>curried</code> procedure is applied to more arguments
 than it accepts, the remaining arguments are passed to the procedure
 body:</p>
 
-<pre class="example"><code>((lambda* (a)
-   (lambda* (b)
-     (lambda* (c) (+ a b c)))) 1 2 3) ⇒ 6
+<pre class="example"><code>((curried (a)
+   (curried (b)
+     (curried (c) (+ a b c)))) 1 2 3) ⇒ 6
 </code></pre>
 
 <h2 id="implementation">Implementation</h2>
@@ -214,7 +208,8 @@ in the <a href="https://github.com/scheme-requests-for-implementation/srfi-232">
 
 <h2 id="acknowledgements">Acknowledgements</h2>
 
-<p>Thanks to Jason Hemann and Daniel P. Friedman for creating <code>lambda*</code>.</p>
+<p>Thanks to Jason Hemann and Daniel P. Friedman for creating
+<code>lambda*</code>, the basis of <code>curried</code>.</p>
 
 <p>Thanks to the SRFI editor and to the participants of the SRFI
 mailing list.</p>
