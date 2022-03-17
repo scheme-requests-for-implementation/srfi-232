@@ -24,21 +24,21 @@
 (import (scheme base)
         (scheme case-lambda))
 
-(define-syntax lambda*
+(define-syntax curried
   (syntax-rules ()
-    ((lambda* formals exp ...)
-     (lambda*-1 formals (begin exp ...)))))
+    ((curried formals exp ...)
+     (curried-1 formals (begin exp ...)))))
 
-(define-syntax lambda*-1
+(define-syntax curried-1
   (syntax-rules ()
-    ((lambda*-1 () exp)
+    ((curried-1 () exp)
      (lambda args
        (if (null? args) exp (apply (exp) args))))
-    ((lambda*-1 (arg0 arg1 ...) exp)
+    ((curried-1 (arg0 arg1 ...) exp)
      (one-or-more (arg0 arg1 ...) exp))
-    ((lambda*-1 (arg0 arg1 ... . rest) exp)
+    ((curried-1 (arg0 arg1 ... . rest) exp)
      (rest-args (arg0 arg1 ... . rest) exp))
-    ((lambda*-1 args exp) (lambda args exp))))
+    ((curried-1 args exp) (lambda args exp))))
 
 (define-syntax one-or-more
   (syntax-rules ()
@@ -64,8 +64,8 @@
 (define (more-args f current)
   (lambda args (apply f (append current args))))
 
-(define-syntax define*
+(define-syntax define-curried
   (syntax-rules ()
-    ((define* (var . formals) exp ...)
+    ((define-curried (var . formals) exp ...)
      (define var
-       (lambda* formals exp ...)))))
+       (curried formals exp ...)))))
