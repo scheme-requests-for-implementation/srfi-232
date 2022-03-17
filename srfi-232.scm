@@ -32,7 +32,8 @@
 (define-syntax lambda*-1
   (syntax-rules ()
     ((lambda*-1 () exp)
-     (syntax-error "lambda*: empty formals list"))
+     (lambda args
+       (if (null? args) exp (apply (exp) args))))
     ((lambda*-1 (arg0 arg1 ...) exp)
      (one-or-more (arg0 arg1 ...) exp))
     ((lambda*-1 (arg0 arg1 ... . rest) exp)
