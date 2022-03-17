@@ -35,7 +35,7 @@ This SRFI describes <code>curried</code>, a variant of
 behave just like ordinary Scheme procedures.  They can be applied to
 their arguments one-by-one, all at once, or anywhere in between,
 without any novel syntax.  <code>curried</code> also supports
-variadic procedures, and procedures created with it have
+nullary and variadic procedures, and procedures created with it have
 predictable behavior when applied to surplus arguments.</p>
 
 <h2 id="rationale">Rationale</h2>
@@ -80,7 +80,7 @@ normal, uncurried Scheme procedures.  For example, a
 <code>curried</code> procedure of two arguments may be applied to one
 argument to return a new procedure of one argument, or directly to two
 arguments to return its value.  <code>curried</code> also provides
-consistent semantics for variadic procedures, and
+consistent semantics for nullary and variadic procedures, and
 predictable behavior for cases in which a procedure is
 applied to more arguments than it accepts.  All this is accomplished
 without the introduction of any novel forms; syntactically,
@@ -108,6 +108,16 @@ procedure, with the same environment semantics as <code>lambda</code>
 <code>curried</code> has the following semantics:</p>
 
 <ul>
+  <li><p>If ⟨formals⟩ is the empty list, then</p>
+    <ul>
+      <li><p>If the procedure is applied to one or more arguments, then
+        ⟨body⟩ is evaluated and the result is applied to those
+        arguments.  It is an error if the value of ⟨body⟩ is not a
+        procedure.</p></li>
+      <li><p>Otherwise, application is identical to that of a nullary
+        procedure created with <code>lambda</code>.</p></li>
+    </ul>
+  </li>
   <li><p>If ⟨formals⟩ is of the form
          (<em>v</em>₁ <em>v₂</em> &hellip; <em>v</em>ₙ), then</p>
     <ul>
@@ -140,7 +150,6 @@ procedure, with the same environment semantics as <code>lambda</code>
   <li><p>If ⟨formals⟩ is of the form ⟨variable⟩ (a single identifier),
     then application proceeds as if the procedure were created with
     <code>lambda</code>.</p></li>
-  <li><p>It is a syntax violation if ⟨formals⟩ is the empty list.</p></li>
 </ul>
 
 <p><code>(define-curried (</code>⟨variable⟩ ⟨formals⟩<code>)</code> ⟨body⟩<code>)</code></p>
@@ -189,7 +198,13 @@ remains:</p>
 ((foo 'a) 'b) ⇒ (a b ())
 </code></pre>
 
-<h3>Extra arguments</h3>
+<p>Currying with nullary procedures:</p>
+
+<pre class="example"><code>((lambda* () (lambda* (x y) (+ x y))) 2 3)
+ ⇒ 5
+</code></pre>
+
+<p>Extra arguments:</p>
 
 <p>When a <code>curried</code> procedure is applied to more arguments
 than it accepts, the remaining arguments are passed to the procedure
