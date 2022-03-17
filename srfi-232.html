@@ -40,15 +40,17 @@ predictable behavior when applied to surplus arguments.</p>
 
 <h2 id="rationale">Rationale</h2>
 
-<p>Currying is a well-known tactic in functional programming and is widely
-supported in many languages (e.g. Standard ML and Haskell).  True
+<p>Currying is a well-known tactic in functional programming and
+many languages (e.g. Standard ML and Haskell) provide convenient ways to
+define curried procedures.  True
 currying, though, is somewhat uncommon in Scheme.  Beyond the fundamental
 building-block of first-class procedures, Scheme provides little support
 for defining curried procedures, and the clumsiness of applying such
-procedures may deter programmers from using them at all.  The
+procedures may deter programmers from using them at all.  Some attempts
+have been made at improving the situation.  The
 &ldquo;higher-order lambda&rdquo; notation of
-<a href="https://srfi.schemers.org/srfi-219/">SRFI 219</a> alleviates the
-first problem; it extends the syntax of <code>define</code> with a simple
+<a href="https://srfi.schemers.org/srfi-219/">SRFI 219</a>
+extends the syntax of <code>define</code> with a simple
 shorthand for writing curried procedures.  The complexity of applying
 curried procedures remains, however:
 
@@ -73,8 +75,7 @@ frequently seen in Scheme programs.  <code>cut</code> also introduces a
 novel notation using the tokens <code>&lt;&gt;</code> and
 <code>&lt;...&gt;</code>, which may pose an obstacle for new users.</p>
 
-<p>The <code>curried</code> form created by Jason Hemann and Daniel P.
-Friedman and described in this SRFI allows the
+<p>The <code>curried</code> form described in this SRFI allows the
 creation of true curried procedures which can also be treated as
 normal, uncurried Scheme procedures.  For example, a
 <code>curried</code> procedure of two arguments may be applied to one
