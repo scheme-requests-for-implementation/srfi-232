@@ -198,12 +198,6 @@ remains:</p>
 ((foo 'a) 'b) ⇒ (a b ())
 </code></pre>
 
-<p>Currying with nullary procedures:</p>
-
-<pre class="example"><code>((lambda* () (lambda* (x y) (+ x y))) 2 3)
- ⇒ 5
-</code></pre>
-
 <p>Extra arguments:</p>
 
 <p>When a <code>curried</code> procedure is applied to more arguments
@@ -213,6 +207,12 @@ body:</p>
 <pre class="example"><code>((curried (a)
    (curried (b)
      (curried (c) (+ a b c)))) 1 2 3) ⇒ 6
+</code></pre>
+
+<p>Currying with nullary procedures:</p>
+
+<pre class="example"><code>((lambda* () (lambda* (x y) (+ x y))) 2 3)
+ ⇒ 5
 </code></pre>
 
 <h2 id="implementation">Implementation</h2>
