@@ -167,12 +167,12 @@ procedure, with the same environment semantics as <code>lambda</code>
 <p>Here, <code>curried</code> is used to create procedures which can
 be concisely parameterized:</p>
 
-<pre class="example"><code>(define* (add* x y) (+ x y))
+<pre class="example"><code>(define-curried (add* x y) (+ x y))
 
 (map (add* 2) '(1 2 3))
  ⇒ (3 4 5)
 
-(define* (fold* proc base lis)
+(define-curried (fold* proc base lis)
   (fold proc base lis))
 
 (let ((sum (fold* + 0))
@@ -211,7 +211,7 @@ body:</p>
 
 <p>Currying with nullary procedures:</p>
 
-<pre class="example"><code>((lambda* () (lambda* (x y) (+ x y))) 2 3)
+<pre class="example"><code>((curried () (curried (x y) (+ x y))) 2 3)
  ⇒ 5
 </code></pre>
 
