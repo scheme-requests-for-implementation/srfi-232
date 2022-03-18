@@ -200,7 +200,7 @@ remains:</p>
 ((foo 'a) 'b) ⇒ (a b ())
 </code></pre>
 
-<p>Extra arguments:</p>
+<h3>Extra arguments</h3>
 
 <p>When a <code>curried</code> procedure is applied to more arguments
 than it accepts, the remaining arguments are passed to the procedure
@@ -211,7 +211,7 @@ body:</p>
      (curried (c) (+ a b c)))) 1 2 3) ⇒ 6
 </code></pre>
 
-<p>Currying with nullary procedures:</p>
+<h3>Currying with nullary procedures</h3>
 
 <pre class="example"><code>((curried () (curried (x y) (+ x y))) 2 3)
  ⇒ 5
