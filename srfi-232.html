@@ -205,8 +205,18 @@ body:</p>
 
 <h3>Currying with nullary procedures</h3>
 
+<p>Since nullary <code>curried</code> expressions evaluate to their
+bodies, application &ldquo;passes through&rdquo; any number of
+such expressions:</p>
+
 <pre class="example"><code>((curried () (curried (x y) (+ x y))) 2 3)
  ⇒ 5
+
+(((curried (x)
+    (curried ()
+      (curried (y z)
+        (list x (* y z))))) 4 5) 6)
+ ⇒ (4 30)
 </code></pre>
 
 <h2 id="implementation">Implementation</h2>
