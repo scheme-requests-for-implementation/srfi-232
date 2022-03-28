@@ -105,22 +105,13 @@ convenient.</p>
 <p>Syntax: ⟨formals⟩ and ⟨body⟩ are as described in section 4.1.4 of
 the R⁷RS.</p>
 
-<p>Semantics: A <code>curried</code> expression evaluates to a
-procedure, with the same environment semantics as <code>lambda</code>
-(R⁷RS 4.1.4).  The application of a procedure created by
-<code>curried</code> has the following semantics:</p>
+<p>Semantics: If ⟨formals⟩ is an empty list, then a
+<code>curried</code> expression evaluates to ⟨body⟩. Otherwise, it
+evaluates to a procedure with the same environment semantics as
+<code>lambda</code> (R⁷RS 4.1.4). The application of a procedure
+created by <code>curried</code> has the following semantics:</p>
 
 <ul>
-  <li><p>If ⟨formals⟩ is the empty list, then</p>
-    <ul>
-      <li><p>If the procedure is applied to one or more arguments, then
-        ⟨body⟩ is evaluated and the result is applied to those
-        arguments.  It is an error if the value of ⟨body⟩ is not a
-        procedure.</p></li>
-      <li><p>Otherwise, application is identical to that of a nullary
-        procedure created with <code>lambda</code>.</p></li>
-    </ul>
-  </li>
   <li><p>If ⟨formals⟩ is of the form
          (<em>v</em>₁ <em>v₂</em> &hellip; <em>v</em>ₙ), then</p>
     <ul>

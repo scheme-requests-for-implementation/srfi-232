@@ -31,9 +31,7 @@
 
 (define-syntax curried-1
   (syntax-rules ()
-    ((curried-1 () exp)
-     (lambda args
-       (if (null? args) exp (apply exp args))))
+    ((curried-1 () exp) exp)
     ((curried-1 (arg0 arg1 ...) exp)
      (one-or-more (arg0 arg1 ...) exp))
     ((curried-1 (arg0 arg1 ... . rest) exp)
