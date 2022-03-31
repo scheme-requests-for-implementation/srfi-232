@@ -1,4 +1,4 @@
-* SRFI 232: An advanced currying form
+* SRFI 232: Flexible curried procedures
 
 ** by Wolfgang Corcoran-Mathe
 
@@ -6,7 +6,7 @@
 
 keywords: [[https://srfi.schemers.org/?keywords=syntax][Syntax]]
 
-This repository hosts [[https://srfi.schemers.org/srfi-232/][SRFI 232]]: An advanced currying form, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
+This repository hosts [[https://srfi.schemers.org/srfi-232/][SRFI 232]]: Flexible curried procedures, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /draft/ status.
 
