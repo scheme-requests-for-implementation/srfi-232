@@ -36,18 +36,18 @@ and Daniel P. Friedman.</p>
 This SRFI describes <code>curried</code>, a variant of
 <code>lambda</code> that creates true curried procedures which also
 behave just like ordinary Scheme procedures.  They can be applied to
-their arguments one-by-one, all at once, or anywhere in between,
+their arguments one by one, all at once, or anywhere in between,
 without any novel syntax.  <code>curried</code> also supports
 nullary and variadic procedures, and procedures created with it have
 predictable behavior when applied to surplus arguments.</p>
 
 <h2 id="rationale">Rationale</h2>
 
-<p>Currying is a well-known tactic in functional programming and
+<p>Currying is a well-known tactic in functional programming, and
 many languages (e.g. Standard ML and Haskell) provide convenient ways to
 define curried procedures.  True
 currying, though, is somewhat uncommon in Scheme.  Beyond the fundamental
-building-block of first-class procedures, Scheme provides little support
+building block of first-class procedures, Scheme provides little support
 for defining curried procedures, and the clumsiness of applying such
 procedures may deter programmers from using them at all.  Some attempts
 have been made at improving the situation.  The
