@@ -8,7 +8,9 @@ keywords: [[https://srfi.schemers.org/?keywords=syntax][Syntax]]
 
 This repository hosts [[https://srfi.schemers.org/srfi-232/][SRFI 232]]: Flexible curried procedures, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
-This SRFI is in /draft/ status.
+This SRFI is in /final/ status.
+
+See also [[https://srfi.schemers.org/srfi-26/][SRFI 26: Notation for Specializing Parameters without Currying]] and [[https://srfi.schemers.org/srfi-219/][SRFI 219: Define higher-order lambda]].
 
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-232/srfi-232.html][SRFI Document]].
 
