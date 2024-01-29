@@ -1,7 +1,5 @@
-;;; SPDX-FileCopyrightText: 2022 Wolfgang Corcoran-Mathe <wcm@sigwinch.xyz>
-;;;
 ;;; SPDX-License-Identifier: MIT
-
+;;; SPDX-FileCopyrightText: 2024 Wolfgang Corcoran-Mathe
 (test-group "Simple currying"
   (test-eqv 5 ((curried (x y) (+ x y)) 2 3))
   (test-eqv 5 (((curried (x y) (+ x y)) 2) 3))

@@ -1,6 +1,6 @@
-;;; SPDX-FileCopyrightText: 2022 Wolfgang Corcoran-Mathe <wcm@sigwinch.xyz>
-;;;
 ;;; SPDX-License-Identifier: MIT
+;;; SPDX-FileCopyrightText: 2024 Wolfgang Corcoran-Mathe
+;;; (C) 2022 Wolfgang Corcoran-Mathe
 
 (import (scheme base)
         (scheme case-lambda))

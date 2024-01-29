@@ -1,6 +1,5 @@
-;;; SPDX-FileCopyrightText: 2022 Wolfgang Corcoran-Mathe <wcm@sigwinch.xyz>
-;;;
 ;;; SPDX-License-Identifier: MIT
+;;; SPDX-FileCopyrightText: 2024 Wolfgang Corcoran-Mathe
 
 ;;; Portable R7RS test framework for SRFI 64.
 

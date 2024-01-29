@@ -1,3 +1,5 @@
+;;; SPDX-License-Identifier: MIT
+;;; SPDX-FileCopyrightText: 2024 Wolfgang Corcoran-Mathe
 ;;; (C) 2022 Wolfgang Corcoran-Mathe
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person
